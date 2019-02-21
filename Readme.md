@@ -1,1 +1,1 @@
-(/assets/screen.png)
+(assets/screen.png)
