@@ -1,0 +1,13 @@
+{% extends "todoapp/base.html" %}
+
+
+{% block content %}
+<h1 class="display-4">Zadanie <i>{{ object.name }}</i></h1>
+
+<ul class="list-group">
+    <li class="list-group-item"><b>Opis</b> {{ object.description }}</li>
+    <li class="list-group-item"><b>Dodano</b> {{ object.created_date|date:"F j, Y" }}</li>
+    <li class="list-group-item"><b>Wykonać do</b> {{ object.task_date|date:"F j, Y" }}</li>
+    <li class="list-group-item"><b>Wykonane</b> {{ object.task_done}}</li>
+</ul>
+{% endblock %}

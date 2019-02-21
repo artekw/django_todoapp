@@ -1,0 +1,40 @@
+{% extends "todoapp/base.html" %}
+
+{% block content %}
+<h1 class="display-4">Moje zadania</h1>
+<a href="/add">Dodaj</a>
+
+{% for task in ordered_tasks %}
+    <p>
+    <div class="list-group">
+        {% if not task.task_important %}
+            <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#task_desc_{{task.id}}" role="button" aria-expanded="false" aria-controls="task_desc_{{task.id}}">
+                {{ task.name }}
+            </a>
+        {% else %}
+            <a class="btn btn-danger btn-lg" data-toggle="collapse" href="#task_desc_{{task.id}}" role="button" aria-expanded="false" aria-controls="task_desc_{{task.id}}">
+            {{ task.name }}
+            </a>
+        {% endif %}
+    </div>
+    {% comment %} Add badge with category {% endcomment %}
+    {% comment %} {% if task.category %}
+        <span class="badge badge-info">{{ task.category }}</span>
+    {% endif %} {% endcomment %}
+
+    {% comment %} Add badge if task is important {% endcomment %}
+    {% comment %} {% if task.task_important %}
+        <span class="badge badge-danger">Pilne</span>
+    {% endif %} {% endcomment %}
+    </p>
+    <div class="collapse" id="task_desc_{{task.id}}">
+            <ul class="list-group">
+                <li class="list-group-item"><i>{{ task.description }}</i></li>
+                {% comment %} <li class="list-group-item"><b>Dodano</b> {{ task.created_date|date:"F j, Y" }}</li> {% endcomment %}
+                <li class="list-group-item"><b>Wykonać do</b> {{ task.task_date|date:"F j, Y" }}</li>
+                {% comment %} <li class="list-group-item"><b>Wykonane</b> {{ task.task_done}}</li> {% endcomment %}
+                <p><a href="/done/{{ task.id }}">Wykonaj</a> | <a href="/update/{{ task.id }}">Edycja</a> | <a href="/delete/{{ task.id }}">Usuń</a></p>
+            </ul>
+    </div>
+{% endfor %}
+{% endblock %}

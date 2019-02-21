@@ -1,0 +1,12 @@
+{% extends "todoapp/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="display-4">Moje zadania</h1>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Dodaj zadanie</button>
+  </form>
+{% endblock %}
