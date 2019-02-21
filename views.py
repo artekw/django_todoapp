@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import generic
 from django.shortcuts import get_object_or_404
@@ -16,9 +16,10 @@ def TasksAll(request):
     return render(request, 'todoapp/todos.html', context)
 
 
-class TaskDone(generic.DetailView):
-    model = Task
-
+def TaskDone(request, num):
+    queryset = Task.objects.filter(pk=num).update(task_done="True")
+    return redirect('task_all')
+    
 
 class TaskByCategoryViewList(generic.ListView):
     model = Task

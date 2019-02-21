@@ -1,9 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
-
-
 class TaskCategory(models.Model):
     category_name = models.CharField(max_length=50)
 
@@ -20,9 +17,6 @@ class Task(models.Model):
     task_date = models.DateTimeField(blank=True, null=True)
     task_done = models.BooleanField(default=False)
     task_important = models.BooleanField(default=False)
-
-    # def get_absolute_url(self):
-    #     return reverse('task', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
