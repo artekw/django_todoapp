@@ -1,10 +1,10 @@
 {% extends "todoapp/base.html" %}
 
 {% block content %}
-<h1 class="display-4">Moje zadania</h1>
-<a href="/add">Dodaj</a> | <a href="/taskdone/">Wykonane zadania</a>
+<h1 class="display-4">Moje wykonane zadania</h1>
+<a href="/">Aktualne zadania</a>
 
-{% for task in ordered_tasks %}
+{% for task in tasks_done %}
     <p>
     <div class="list-group">
         {% if not task.task_important %}
@@ -33,7 +33,7 @@
                 {% comment %} <li class="list-group-item"><b>Dodano</b> {{ task.created_date|date:"F j, Y" }}</li> {% endcomment %}
                 <li class="list-group-item"><b>Wykonać do</b> {{ task.task_date|date:"F j, Y" }}</li>
                 {% comment %} <li class="list-group-item"><b>Wykonane</b> {{ task.task_done}}</li> {% endcomment %}
-                <p><a href="/dodone/{{ task.id }}">Wykonaj</a> | <a href="/update/{{ task.id }}">Edycja</a> | <a href="/delete/{{ task.id }}">Usuń</a></p>
+                <p><a href="/update/{{ task.id }}">Edycja</a> | <a href="/delete/{{ task.id }}">Usuń</a></p>
             </ul>
     </div>
 {% endfor %}
