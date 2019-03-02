@@ -25,6 +25,5 @@ v0.1
 
 
 # Zrzut ekranu
-![Okno główne](https://github.com/artekw/django_todoapp/blob/master/assets/screen3.png)
-![Dodawanie zdarzenia](https://github.com/artekw/django_todoapp/blob/master/assets/screen2.png)
-![Podgląd szczegółów zdarzenia](https://github.com/artekw/django_todoapp/blob/master/assets/screen1.png)
+![Zrzut ekranu](https://github.com/artekw/django_todoapp/blob/master/assets/screen.png)
+
