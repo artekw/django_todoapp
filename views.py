@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from .models import Task, TaskCategory
 from .forms import TaskForm
 
+from .google_api import create_event
 
 def TasksAll(request):
     tasks_new = Task.objects.filter(
@@ -59,12 +60,16 @@ class TaskAddForm(generic.FormView):
     success_url = reverse_lazy('task_all')
 
     def form_valid(self, form):
+        # dodaj zadanie do Kaledarza Google
+        e = create_event(form.event())
+        print(e.get('id'))
         form.save()
         return super().form_valid(form)
 
 class TaskUpdate(generic.UpdateView):
     model = Task
-    fields = ('name', 'category', 'description', 'task_date', 'task_important')
+    fields = ('name', 'category', 'description',
+              'task_date', 'task_deadline','task_important')
     template_name_suffix = '_update_form'
     success_url = reverse_lazy('task_all')
 
